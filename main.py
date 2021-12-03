@@ -6,6 +6,7 @@ from PIL import Image
 import math
 from sklearn import preprocessing
 
+#normalize given image
 def normalize(image):
     if normalization:
         (rows, cols, channels)=image.shape
@@ -26,6 +27,7 @@ def normalize(image):
     else:
         return image
 
+#clasic forumula with custom parameter list
 def get_image(image_path):
     """Get a numpy array of an image so that one can access values[x][y]."""
     image = Image.open(image_path, "r")
@@ -59,7 +61,7 @@ for itter in range(R_coef.__len__()):
     else:
         cv2.imwrite(OutputImageNamePath+"_"+str(itter)+ImageExtension,grayImage)
 
-
+#personal formula
 for row in range(rows):
         for col in range(cols):
             aux = (newImage[row][col][0] + newImage[row][col][1] + newImage[row][col][2])/(3*255)
