@@ -45,9 +45,10 @@ image = get_image(InputImageNamePath+ImageExtension)
 (rows, cols, channels)=image.shape
 
 newImage=normalize(image)
-
+myConversion = normalize(image)
 for itter in range(R_coef.__len__()):
     grayImage = numpy.zeros((rows, cols), dtype=int)
+    auxMax = numpy.zeros((rows, cols), dtype=int)
 
     for row in range(rows):
         for col in range(cols):
@@ -57,4 +58,12 @@ for itter in range(R_coef.__len__()):
         cv2.imwrite(OutputImageNamePath+"_NORMALIZED_"+str(itter)+ImageExtension,grayImage)
     else:
         cv2.imwrite(OutputImageNamePath+"_"+str(itter)+ImageExtension,grayImage)
+
+
+for row in range(rows):
+        for col in range(cols):
+            aux = (newImage[row][col][0] + newImage[row][col][1] + newImage[row][col][2])/(3*255)
+            myConversion[row][col]=newImage[row][col][0]*aux+newImage[row][col][1]*aux+newImage[row][col][2]*aux
+
+cv2.imwrite(OutputImageNamePath+"_PERSONAL_CONVERSION"+ImageExtension,myConversion)
 print("Eop")
