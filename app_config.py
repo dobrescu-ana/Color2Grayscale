@@ -1,5 +1,5 @@
-InputImageNamePath="input\lena"
-OutputImageNamePath="output\lena"
+InputImageNamePath="input\fruits"
+OutputImageNamePath="output\fruits"
 ImageExtension=".png"
 
 R_coef=[1.0,
